@@ -10,3 +10,5 @@ API 網址：
 - ESlint
   - `vue3-recommended`
   - `airbnb-base`
+
+什麼？Bootstrap 5 實戰營 你用 Tailwind CSS 😱？ 沒辦法 Bootstrap 我還不熟，所以我在裡面寫作業 🤣。
