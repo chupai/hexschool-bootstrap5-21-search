@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .tooltip {
+    @apply relative;
+  }
+  .tooltip::after {
+    content: attr(data-tooltip);
+    @apply absolute p-3 top-8 z-10;
+    @apply whitespace-nowrap text-white text-base font-normal tracking-wider;
+    @apply bg-primary-800 bg-opacity-90 rounded-xl;
+    @apply invisible opacity-0;
+    @apply transition -translate-x-1/2 -translate-y-1;
+  }
+  .tooltip:hover::after {
+    @apply block visible opacity-100;
+    @apply -translate-x-1/2 translate-y-0;
+  }
+}

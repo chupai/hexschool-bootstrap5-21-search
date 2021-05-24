@@ -1,0 +1,30 @@
+<script>
+import { ref, watch } from 'vue';
+import * as Util from '@/utils';
+
+export default {
+  name: 'VDarkModeSwitch',
+  emits: ['update:modelValue'],
+  setup() {
+    const isDark = ref(Util.storage.get('darkMode', false));
+
+    watch(isDark, (newVal) => {
+      document.querySelector('body').classList.toggle('dark', newVal);
+      Util.storage.set('darkMode', newVal);
+    }, { immediate: true });
+
+    return { isDark };
+  },
+};
+</script>
+
+<template>
+  <div
+    class="p-2 cursor-pointer select-none"
+    @click="isDark = !isDark"
+  >
+    <p>
+      {{ isDark ? '🌙' : '🌞' }}
+    </p>
+  </div>
+</template>
