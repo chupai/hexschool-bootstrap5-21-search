@@ -20,7 +20,7 @@ export default {
 
 <template>
   <div
-    class="cursor-pointer select-none"
+    class="cursor-pointer select-none w-full h-full flex justify-center items-center"
     @click="isDark = !isDark"
   >
     <p>

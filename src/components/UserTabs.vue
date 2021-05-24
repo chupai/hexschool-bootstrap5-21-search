@@ -18,7 +18,7 @@ export default {
 
 <template>
   <nav>
-    <ul class="flex justify-between space-x-5 mb-5">
+    <ul class="flex justify-between space-x-4 mb-5">
       <li
         v-for="tab of TAB_LIST"
         :key="tab.value"
