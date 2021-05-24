@@ -87,9 +87,9 @@ export default {
 
     const statisticalData = reactive({
       allCount: 0,
-      doneCount: 0,
-      weekList: [0, 0, 0, 0, 0],
-      doneList: [0, 0, 0, 0, 0, 0],
+      doneCount: 0, // 至少繳交一次
+      weekList: [0, 0, 0, 0, 0], // 每周繳交數統計 week1 ~ week5
+      doneList: [0, 0, 0, 0, 0, 0], // 繳交數量統計 0 ~ 5
     });
     provide('statisticalData', statisticalData);
 

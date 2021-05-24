@@ -31,8 +31,13 @@ export default {
       if (isNone.value) {
         return '該寫作業囉！';
       }
-      const rank = statisticalData.doneList[user.value.doneCount] / statisticalData.allCount;
-      return `你目前的進度排名在前 ${(rank * 100).toFixed(2)}%`;
+
+      let winCount = statisticalData.allCount;
+      for (let i = WEEK_COUNT; i >= user.value.doneCount; i -= 1) {
+        winCount -= statisticalData.doneList[i];
+      }
+      const percentileRanking = winCount / (statisticalData.allCount - 1);
+      return `你已贏過 ${(percentileRanking * 100).toFixed(2)}% 的人`;
     });
 
     const updateLiked = (value) => {
