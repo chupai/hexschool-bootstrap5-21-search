@@ -3,6 +3,9 @@
 API 網址：
 [https://raw.githubusercontent.com/hexschool/live-bootstrap5-21-api/master/data.json](https://raw.githubusercontent.com/hexschool/live-bootstrap5-21-api/master/data.json)
 
+Page：
+[https://chupai.github.io/hexschool-bootstrap5-21-search/](https://chupai.github.io/hexschool-bootstrap5-21-search/)
+
 開發環境、工具：
 - Vite2
 - Vue 3 - Composition API
