@@ -16,6 +16,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:chupai/hexschool-bootstrap5-21-search.git master:gh-pages
+git push -f https://github.com/chupai/hexschool-bootstrap5-21-search.git master:gh-pages
 
 cd -

@@ -1,28 +1,26 @@
 <script>
-import VDarkModeSwitch from '@/components/VDarkModeSwitch.vue';
-
 export default {
   name: 'TheHeader',
-  components: { VDarkModeSwitch },
 };
 </script>
 
 <template>
-  <header class="bg-white dark:bg-dark-800 py-4 sm:py-5 shadow text-base sm:text-2xl md:text-3xl">
+  <header
+    class="
+    py-2 sm:py-5 text-base sm:text-2xl md:text-3xl
+    bg-white dark:bg-dark-800 shadow"
+  >
     <div class="container px-2 sm:px-4">
-      <div class="flex items-center justify-between">
-        <a
-          href="https://forms.gle/cbYW3oH7WYsX7n3WA"
-          target="_blank"
-          rel="noreferrer noopener"
-          title="報名了？該交作業囉！"
-        >
-          <h1 class="font-bold">
-            21 天 Bootstrap 5 實戰營 誰沒寫作業
-          </h1>
-        </a>
-        <v-dark-mode-switch />
-      </div>
+      <a
+        href="https://forms.gle/cbYW3oH7WYsX7n3WA"
+        target="_blank"
+        rel="noreferrer noopener"
+        title="報名了？該交作業囉！"
+      >
+        <h1 class="font-bold text-center">
+          21 天 Bootstrap 5 實戰營 - 誰沒寫作業
+        </h1>
+      </a>
     </div>
   </header>
 </template>

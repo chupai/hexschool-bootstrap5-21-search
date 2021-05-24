@@ -20,7 +20,7 @@ export default {
 
 <template>
   <div
-    class="p-2 cursor-pointer select-none"
+    class="cursor-pointer select-none"
     @click="isDark = !isDark"
   >
     <p>

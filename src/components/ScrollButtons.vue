@@ -1,8 +1,9 @@
 <script>
+import VDarkModeSwitch from '@/components/VDarkModeSwitch.vue';
 
 export default {
   name: 'ScrollButtons',
-  components: {},
+  components: { VDarkModeSwitch },
   props: {
     modelValue: {
       type: String,
@@ -26,6 +27,13 @@ export default {
 <template>
   <teleport to="body">
     <div class="flex flex-col space-y-2 fixed right-5 bottom-5 z-50">
+      <a
+        class="btn"
+        title="暗黑模式"
+        @click.prevent=""
+      >
+        <v-dark-mode-switch />
+      </a>
       <a
         href=""
         title="我的追蹤"
@@ -81,7 +89,8 @@ export default {
 <style lang="postcss" scoped>
   .btn {
     @apply flex justify-center items-center w-12 h-12 cursor-pointer;
-    @apply rounded-md bg-primary-900 text-white bg-opacity-60;
+    @apply rounded-md bg-primary-900 bg-opacity-50 text-white;
+    @apply dark:bg-dark-900 dark:bg-opacity-50;
     @apply hover:bg-opacity-100;
   }
 </style>
