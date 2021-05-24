@@ -8,8 +8,8 @@ export default {
 </script>
 
 <template>
-  <header class="bg-white dark:bg-dark-800 py-4 sm:py-5 shadow text-xl sm:text-2xl md:text-3xl">
-    <div class="container px-5">
+  <header class="bg-white dark:bg-dark-800 py-4 sm:py-5 shadow text-base sm:text-2xl md:text-3xl">
+    <div class="container px-2 sm:px-4">
       <div class="flex items-center justify-between">
         <a
           href="https://forms.gle/cbYW3oH7WYsX7n3WA"

@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex items-center p-2 bg-white rounded-full dark:bg-dark-800">
+  <div class="flex items-center p-2 bg-white rounded-full dark:bg-dark-800 overflow-hidden">
     <button
       type="button"
       class="
@@ -42,7 +42,7 @@ export default {
       v-bind="$attrs"
       type="text"
       class="
-        block flex-grow h-10 px-3 tracking-wider rounded-r-full
+        block w-full h-10 px-3 tracking-wider rounded-r-full
         appearance-none placeholder-gray-400 bg-white text-lg
         focus:outline-none focus:bg-gray-50 focus:placeholder-gray-100
         dark:bg-dark-800 dark:focus:bg-dark-900

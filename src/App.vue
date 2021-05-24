@@ -132,7 +132,7 @@ export default {
   <div class="vld-parent">
     <the-header />
     <section class="py-5">
-      <div class="container px-5">
+      <div class="container px-2 sm:px-4">
         <user-statistics />
         <v-search-button
           v-model="searchWord"
@@ -142,7 +142,7 @@ export default {
       </div>
     </section>
     <main class="mb-5 min-h-screen">
-      <div class="container px-5">
+      <div class="container px-2 sm:px-4">
         <user-tabs v-model="tabState" />
         <user-list>
           <user-item

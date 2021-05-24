@@ -23,6 +23,9 @@ module.exports = {
         primary: colors.emerald,
         dark: colors.coolGray,
       },
+      screens: {
+        xs: '360px',
+      },
     },
   },
   variants: {

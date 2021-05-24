@@ -35,13 +35,15 @@ export default {
     <div
       class="
         flex item-center justify-between items-center mb-1
-        text-sm text-primary-600 dark:text-primary-300
+        text-xs sm:text-sm text-primary-600 dark:text-primary-300
       "
     >
       <span
         v-if="showPivot"
       >{{ pivotText }}</span>
-      <span v-if="showPercent">{{ percentText || percent.toFixed(digits) + ' %' }}</span>
+      <span
+        v-if="showPercent"
+      >{{ percentText || percent.toFixed(digits) + ' %' }}</span>
     </div>
     <div class="overflow-hidden h-2 rounded-full bg-primary-200 dark:bg-primary-800">
       <div

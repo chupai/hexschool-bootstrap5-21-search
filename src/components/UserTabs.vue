@@ -23,7 +23,7 @@ export default {
         v-for="tab of TAB_LIST"
         :key="tab.value"
         class="flex-grow p-2 md:p-5 cursor-pointer rounded-xl
-          text-xl md:text-3xl font-bold text-center text-white text-opacity-80
+          text-base sm:text-2l md:text-3xl font-bold text-center text-white text-opacity-80
           hover:bg-primary-700 dark:hover:bg-dark-800
         "
         :class="{ 'is-active': modelValue === tab.value }"

@@ -63,7 +63,7 @@ export default {
     <div>
       <div class="flex justify-between items-center">
         <h3
-          class="tooltip text-2xl font-bold leading-none flex items-center"
+          class="tooltip text-xl md:text-2xl font-bold leading-none flex items-center"
           :data-tooltip="rankMessage"
         >
           <span
@@ -86,7 +86,8 @@ export default {
       </div>
       <ul
         v-if="!isNone"
-        class="mt-2 grid grid-rows-3 grid-flow-col grid-cols-2 gap-1"
+        class="mt-2 grid grid-flow-row sm:grid-flow-col gap-1
+         grid-rows-none xs:grid-rows-3 grid-cols-1 xs:grid-cols-2"
       >
         <li
           v-for="n of WEEK_COUNT"

@@ -26,7 +26,7 @@ export default {
 <template>
   <a
     class="
-      font-cursive p-1 select-none text-sm text-primary-600 hover:text-primary-400
+      font-cursive p-1 select-none text-xs md:text-sm text-primary-600 hover:text-primary-400
       dark:text-primary-200 dark:hover:text-primary-100
     "
     target="_blank"

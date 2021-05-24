@@ -17,8 +17,8 @@ export default {
     <li>
       <v-progress
         :percent="(statisticalData.doneCount / statisticalData.allCount) * 100"
-        :pivot-text="`至少繳交一份的人數：${statisticalData.doneCount}`"
-        :percent-text="`報名總人數：${statisticalData.allCount}`"
+        :pivot-text="`至少繳交一份：${statisticalData.doneCount}`"
+        :percent-text="`報名數：${statisticalData.allCount}`"
       />
     </li>
     <li
