@@ -29,6 +29,8 @@ export default {
       font-cursive p-1 select-none text-xs md:text-sm text-primary-600 hover:text-primary-400
       dark:text-primary-200 dark:hover:text-primary-100
     "
+    :class="[
+      url ? 'text-primary-600 dark:text-primary-200' : 'text-primary-200 dark:text-primary-800']"
     target="_blank"
     rel="noreferrer noopener"
     :href="url"
