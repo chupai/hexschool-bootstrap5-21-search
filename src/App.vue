@@ -11,6 +11,7 @@ import UserList from '@/components/UserList.vue';
 import UserItem from '@/components/UserItem.vue';
 import UserTabs from '@/components/UserTabs.vue';
 import UserStatistics from '@/components/UserStatistics.vue';
+import UserFilter from '@/components/UserFilter.vue';
 import ScrollButtons from '@/components/ScrollButtons.vue';
 import VSearchButton from '@/components/VSearchButton.vue';
 import VLoading from '@/components/VLoading.vue';
@@ -45,6 +46,7 @@ async function initUserList(userData) {
   userData.none = userData.all.filter((item) => item.doneCount === 0);
   userData.done = userData.all.filter((item) => item.doneCount !== 0);
   userData.done.sort((a, b) => b.doneCount - a.doneCount);
+  userData.filterDone = userData.done;
 }
 
 function calcStatisticalData(statisticalData, userData) {
@@ -71,6 +73,7 @@ export default {
     UserList,
     UserItem,
     UserTabs,
+    UserFilter,
     UserStatistics,
     ScrollButtons,
     VSearchButton,
@@ -81,6 +84,7 @@ export default {
       all: [],
       none: [],
       done: [],
+      filterDone: [],
       search: [],
       like: [],
     });
@@ -100,7 +104,28 @@ export default {
       isLoading.value = false;
     });
 
-    const tabState = ref('done');
+    const userFilters = ref([]);
+    watch(userFilters, (newValue) => {
+      isLoading.value = true;
+      if (newValue.length === 0) {
+        userData.filterDone = userData.done;
+      } else {
+        userData.filterDone = userData.done.filter((user) => {
+          let temp = true;
+          newValue.forEach((week) => {
+            if (!user[week]) {
+              temp = false;
+            }
+          });
+          return temp;
+        });
+      }
+      window.setTimeout(() => {
+        isLoading.value = false;
+      }, 500);
+    });
+
+    const tabState = ref('filterDone');
     const searchWord = ref('');
 
     const searchUser = () => {
@@ -123,6 +148,7 @@ export default {
       statisticalData,
       searchUser,
       isLoading,
+      userFilters,
     };
   },
 };
@@ -143,6 +169,7 @@ export default {
     </section>
     <main class="mb-5 min-h-screen">
       <div class="container px-2 sm:px-4">
+        <user-filter v-model:filters="userFilters" />
         <user-tabs v-model="tabState" />
         <user-list>
           <user-item
