@@ -169,7 +169,10 @@ export default {
     </section>
     <main class="mb-5 min-h-screen">
       <div class="container px-2 sm:px-4">
-        <user-filter v-model:filters="userFilters" />
+        <user-filter
+          v-show="tabState === 'filterDone'"
+          v-model:filters="userFilters"
+        />
         <user-tabs v-model="tabState" />
         <user-list>
           <user-item
