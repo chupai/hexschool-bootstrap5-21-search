@@ -1,3 +1,5 @@
+import { NAME_SPACE } from '@/enums';
+
 /**
  * 搜尋列表，選項必須是物件
  * @param {array} list - 列表陣列
@@ -11,7 +13,6 @@ export function searchList(list, propName, keyword) {
   return list.filter((item) => item[propName].match(reg));
 }
 
-const NAME_SPACE = 'hexschool-bootstrap5-21';
 export const storage = {
   set(key, value) {
     let data = window.localStorage.getItem(NAME_SPACE);
