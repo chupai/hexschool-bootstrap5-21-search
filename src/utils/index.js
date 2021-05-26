@@ -33,14 +33,3 @@ export const storage = {
     return data[key];
   },
 };
-
-/**
- * 陣列比較
- * @param {array} arr1
- * @param {array} arr2
- * @returns {array} 回傳陣列之間的差異
- */
-export function differenceArray(arr1, arr2) {
-  const set = new Set(arr2);
-  return arr1.filter((item) => !set.has(item));
-}
