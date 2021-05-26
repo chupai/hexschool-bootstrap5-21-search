@@ -1,7 +1,7 @@
 <script>
 import { toRef, computed, inject } from 'vue';
 import * as Util from '@/utils';
-import { WEEK_COUNT } from '@/enums';
+import { WEEK_COUNT, WEEK_LIST } from '@/enums';
 
 import UserItemLink from '@/components/UserItemLink.vue';
 import UserItemLike from '@/components/UserItemLike.vue';
@@ -46,7 +46,7 @@ export default {
     };
 
     return {
-      WEEK_COUNT, isNone, isAllDone, rankMessage, updateLiked,
+      WEEK_COUNT, WEEK_LIST, isNone, isAllDone, rankMessage, updateLiked,
     };
   },
 };
@@ -83,18 +83,17 @@ export default {
       </div>
       <ul
         v-if="!isNone"
-        class="mt-2 grid grid-flow-row sm:grid-flow-col gap-1
-         grid-rows-none xs:grid-rows-2 grid-cols-1 xs:grid-cols-2"
+        class="mt-2 grid grid-cols-3 gap-1"
       >
         <li
-          v-for="n of WEEK_COUNT"
-          :key="n"
+          v-for="(value, key) of WEEK_LIST"
+          :key="key"
         >
           <user-item-link
-            :url="user[`week${n}Url`]"
-            :class="{'pointer-events-none': !user[`week${n}`] }"
+            :url="user[`${key}Url`]"
+            :class="{'pointer-events-none': !user[key] }"
           >
-            {{ `Week${n}:${user[`week${n}`] || ''}` }}
+            {{ `${value}：${user[key] || ''}` }}
           </user-item-link>
         </li>
       </ul>

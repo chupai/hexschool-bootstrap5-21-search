@@ -1,13 +1,14 @@
 <script>
 import { inject } from 'vue';
 import VProgress from '@/components/VProgress.vue';
+import { WEEK_LIST } from '@/enums';
 
 export default {
   name: 'UserStatistics',
   components: { VProgress },
   setup() {
     const statisticalData = inject('statisticalData');
-    return { statisticalData };
+    return { WEEK_LIST, statisticalData };
   },
 };
 </script>
@@ -27,7 +28,7 @@ export default {
     >
       <v-progress
         :percent="(value / statisticalData.doneCount) * 100"
-        :pivot-text="`week${index + 1}：${value}`"
+        :pivot-text="`${WEEK_LIST['week' + (index + 1)]}：${value}`"
       />
     </li>
   </ul>

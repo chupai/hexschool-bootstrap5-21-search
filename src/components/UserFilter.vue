@@ -25,17 +25,17 @@ export default {
 <template>
   <ul class="flex space-x-2 mb-2 text-xs sm:text-base">
     <li
-      v-for="week of WEEK_LIST"
-      :key="week"
+      v-for="(value, key) of WEEK_LIST"
+      :key="key"
       class="checkbox"
     >
       <input
-        :id="week"
+        :id="key"
         v-model="valueList"
         type="checkbox"
-        :value="week"
+        :value="key"
       >
-      <label :for="week">{{ week }}</label>
+      <label :for="key">{{ value }}</label>
     </li>
   </ul>
 </template>

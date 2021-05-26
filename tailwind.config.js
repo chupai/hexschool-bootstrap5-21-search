@@ -15,8 +15,6 @@ module.exports = {
     },
     fontFamily: {
       sans: ['"Noto Sans TC"', 'sans-serif'],
-      cursive: ['"Press Start 2P"', 'cursive'],
-
     },
     extend: {
       colors: {

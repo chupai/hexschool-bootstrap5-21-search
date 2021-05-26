@@ -1,11 +1,11 @@
 export const NAME_SPACE = 'hexschool-bootstrap5-21';
 export const WEEK_COUNT = 3;
 
-const weekList = [];
-for (let i = 1; i <= WEEK_COUNT; i += 1) {
-  weekList.push(`week${i}`);
-}
-export const WEEK_LIST = weekList;
+export const WEEK_LIST = {
+  week1: '主線一',
+  week2: '主線二',
+  week3: '最終',
+};
 
 export const TAB_LIST = [
   {
