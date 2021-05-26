@@ -21,12 +21,6 @@ export default {
     const isAllDone = computed(() => user.value.doneCount === WEEK_COUNT);
 
     const statisticalData = inject('statisticalData');
-    const progress = computed(() => {
-      if (isAllDone.value) {
-        return '完成';
-      }
-      return `${(user.value.doneCount / WEEK_COUNT) * 100}%`;
-    });
     const rankMessage = computed(() => {
       if (isNone.value) {
         return '該寫作業囉！';
@@ -52,7 +46,7 @@ export default {
     };
 
     return {
-      WEEK_COUNT, progress, isNone, isAllDone, rankMessage, updateLiked,
+      WEEK_COUNT, isNone, isAllDone, rankMessage, updateLiked,
     };
   },
 };
@@ -75,13 +69,11 @@ export default {
             v-if="!isNone"
             class="px-4 mr-2 rounded-full select-none text-base font-normal text-white"
             :class="{
-              'bg-primary-400 dark:bg-primary-800': user.doneCount === 1,
-              'bg-primary-500 dark:bg-primary-700': user.doneCount === 2,
-              'bg-primary-600 dark:bg-primary-600': user.doneCount === 3,
-              'bg-primary-700 dark:bg-primary-500': user.doneCount === 4,
-              'bg-primary-800 dark:bg-primary-400': user.doneCount === 5,
+              'bg-primary-300 dark:bg-primary-700': user.doneCount === 1,
+              'bg-primary-500 dark:bg-primary-500': user.doneCount === 2,
+              'bg-primary-700 dark:bg-primary-300': user.doneCount === 3,
             }"
-          >{{ progress }}</span>
+          >{{ user.doneCount !== 3 ? `完成數：${user.doneCount}`: '恭喜完成' }}</span>
           {{ user.name }}
         </h3>
         <user-item-like
@@ -92,7 +84,7 @@ export default {
       <ul
         v-if="!isNone"
         class="mt-2 grid grid-flow-row sm:grid-flow-col gap-1
-         grid-rows-none xs:grid-rows-3 grid-cols-1 xs:grid-cols-2"
+         grid-rows-none xs:grid-rows-2 grid-cols-1 xs:grid-cols-2"
       >
         <li
           v-for="n of WEEK_COUNT"
