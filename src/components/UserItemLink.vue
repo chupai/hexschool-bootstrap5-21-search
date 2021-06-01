@@ -1,7 +1,4 @@
 <script>
-
-import { toRef } from 'vue';
-
 export default {
   name: 'UserItemLink',
   props: {
@@ -9,16 +6,6 @@ export default {
       type: String,
       default: '',
     },
-  },
-  setup(props) {
-    const url = toRef(props, 'url');
-    const clickHandler = (event) => {
-      if (url.value === '') {
-        event.preventDefault();
-        alert('抱歉，沒提供作業連結');
-      }
-    };
-    return { clickHandler };
   },
 };
 </script>
@@ -34,7 +21,6 @@ export default {
     target="_blank"
     rel="noreferrer noopener"
     :href="url"
-    @click="clickHandler"
   >
     <slot />
   </a>

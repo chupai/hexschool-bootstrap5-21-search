@@ -21,7 +21,7 @@ function initUser(userList) {
   userList.forEach((user, index) => {
     let doneCount = 0;
     for (let i = 1; i <= WEEK_COUNT; i += 1) {
-      if (user[`week${i}`]) {
+      if (user[`week${i}Url`]) {
         doneCount += 1;
       }
     }
@@ -56,7 +56,7 @@ function calcStatisticalData(statisticalData, userData) {
   const { weekList, doneList } = statisticalData;
   userData.all.forEach((user) => {
     weekList.forEach((count, index) => {
-      if (user[`week${index + 1}`]) { // week1 為 0 所以 + 1
+      if (user[`week${index + 1}Url`]) { // week1 為 0 所以 + 1
         weekList[index] += 1;
       }
     });
@@ -113,7 +113,7 @@ export default {
         userData.filterDone = userData.done.filter((user) => {
           let temp = true;
           newValue.forEach((week) => {
-            if (!user[week]) {
+            if (!user[`${week}Url`]) {
               temp = false;
             }
           });

@@ -91,9 +91,9 @@ export default {
         >
           <user-item-link
             :url="user[`${key}Url`]"
-            :class="{'pointer-events-none': !user[key] }"
+            :class="{'pointer-events-none': !user[`${key}Url`] }"
           >
-            {{ `${value}：${user[key] || ''}` }}
+            {{ value }}：{{ user[`${key}Url`] ? user[key] : '' }}
           </user-item-link>
         </li>
       </ul>
