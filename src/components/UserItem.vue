@@ -18,7 +18,6 @@ export default {
   setup(props) {
     const user = toRef(props, 'user');
     const isNone = computed(() => user.value.doneCount === 0);
-    const isAllDone = computed(() => user.value.doneCount === WEEK_COUNT);
 
     const statisticalData = inject('statisticalData');
     const rankMessage = computed(() => {
@@ -26,9 +25,13 @@ export default {
         return '該寫作業囉！';
       }
 
-      let winCount = statisticalData.allCount;
-      for (let i = WEEK_COUNT; i >= user.value.doneCount; i -= 1) {
-        winCount -= statisticalData.doneList[i];
+      let winCount = statisticalData.allCount; // 預設人數
+      for (let i = 5; i >= user.value.rank; i -= 1) {
+        if (i >= 3) {
+          winCount -= statisticalData.week3List[i - 3]; // 陣列位置為 3 4 5 所以減3
+        } else {
+          winCount -= statisticalData.doneList[i];
+        }
       }
       const percentileRanking = winCount / (statisticalData.allCount - 1);
       return `你已贏過 ${(percentileRanking * 100).toFixed(2)}% 的人`;
@@ -46,7 +49,7 @@ export default {
     };
 
     return {
-      WEEK_COUNT, WEEK_LIST, isNone, isAllDone, rankMessage, updateLiked,
+      WEEK_COUNT, WEEK_LIST, isNone, rankMessage, updateLiked,
     };
   },
 };
@@ -69,11 +72,13 @@ export default {
             v-if="!isNone"
             class="px-4 mr-2 rounded-full select-none text-base font-normal text-white"
             :class="{
-              'bg-primary-300 dark:bg-primary-700': user.doneCount === 1,
-              'bg-primary-500 dark:bg-primary-500': user.doneCount === 2,
-              'bg-primary-700 dark:bg-primary-300': user.doneCount === 3,
+              'bg-primary-300 dark:bg-primary-300': user.rank === 1,
+              'bg-primary-400 dark:bg-primary-400': user.rank === 2,
+              'bg-primary-500 dark:bg-primary-500': user.rank === 3,
+              'bg-primary-600 dark:bg-primary-600': user.rank === 4,
+              'bg-primary-700 dark:bg-primary-700': user.rank === 5,
             }"
-          >{{ user.doneCount !== 3 ? `完成數：${user.doneCount}`: '恭喜完成' }}</span>
+          >{{ user.rank !== 5 ? `進度：${user.rank}`: '恭喜完成' }}</span>
           {{ user.name }}
         </h3>
         <user-item-like

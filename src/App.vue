@@ -26,9 +26,24 @@ function initUser(userList) {
       }
     }
     user.doneCount = doneCount;
-
+    if (user.doneCount < 3) {
+      user.rank = doneCount;
+    } else {
+      switch (user.week3) {
+        case 'LV1':
+          user.rank = 3;
+          break;
+        case 'LV2':
+          user.rank = 4;
+          break;
+        case 'LV3':
+          user.rank = 5;
+          break;
+        default:
+          break;
+      }
+    }
     user.id = index;
-
     if (likeList.includes(user.id)) {
       user.isLiked = true;
     } else {
@@ -45,7 +60,7 @@ async function initUserList(userData) {
   initUser(userData.all);
   userData.none = userData.all.filter((item) => item.doneCount === 0);
   userData.done = userData.all.filter((item) => item.doneCount !== 0);
-  userData.done.sort((a, b) => b.doneCount - a.doneCount);
+  userData.done.sort((a, b) => b.rank - a.rank);
   userData.filterDone = userData.done;
 }
 
@@ -53,13 +68,28 @@ function calcStatisticalData(statisticalData, userData) {
   statisticalData.allCount = userData.all.length;
   statisticalData.doneCount = userData.done.length;
 
-  const { weekList, doneList } = statisticalData;
+  const { weekList, doneList, week3List } = statisticalData;
   userData.all.forEach((user) => {
+    // 計算 week 1 ~ 3完成數
     weekList.forEach((count, index) => {
       if (user[`week${index + 1}Url`]) { // week1 為 0 所以 + 1
         weekList[index] += 1;
       }
     });
+    // 計算 week3 LV 數
+    switch (user.rank) {
+      case 3:
+        week3List[0] += 1;
+        break;
+      case 4:
+        week3List[1] += 1;
+        break;
+      case 5:
+        week3List[2] += 1;
+        break;
+      default:
+        break;
+    }
     doneList[user.doneCount] += 1;
   });
 }
@@ -94,6 +124,7 @@ export default {
       doneCount: 0, // 至少繳交一次
       weekList: [0, 0, 0], // 每周繳交數統計 week1 ~ week3
       doneList: [0, 0, 0, 0], // 繳交數量統計 0 ~ 3
+      week3List: [0, 0, 0], // 第三周 LV 統計 1 ~ 3
     });
     provide('statisticalData', statisticalData);
 
