@@ -40,6 +40,7 @@ function initUser(userList) {
           user.rank = 5;
           break;
         default:
+          user.rank = 3; // 沒填 等於 LV1
           break;
       }
     }
