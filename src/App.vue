@@ -78,20 +78,25 @@ function calcStatisticalData(statisticalData, userData) {
         weekList[index] += 1;
       }
     });
+
     // 計算 week3 LV 數
-    switch (user.rank) {
-      case 3:
-        week3List[0] += 1;
-        break;
-      case 4:
-        week3List[1] += 1;
-        break;
-      case 5:
-        week3List[2] += 1;
-        break;
-      default:
-        break;
+    if (user.week3Url) {
+      switch (user.week3) {
+        case 'LV1':
+          week3List[0] += 1;
+          break;
+        case 'LV2':
+          week3List[1] += 1;
+          break;
+        case 'LV3':
+          week3List[2] += 1;
+          break;
+        default:
+          week3List[0] += 1;
+          break;
+      }
     }
+
     doneList[user.doneCount] += 1;
   });
 }
