@@ -64,7 +64,7 @@ export default {
   >
     <div>
       <div class="flex justify-between items-center">
-        <h3
+        <h2
           class="tooltip text-xl md:text-2xl font-bold leading-none flex items-center"
           :data-tooltip="rankMessage"
         >
@@ -80,12 +80,18 @@ export default {
             }"
           >{{ user.rank !== 5 ? `進度：${user.rank}`: '恭喜完成' }}</span>
           {{ user.name }}
-        </h3>
+        </h2>
         <user-item-like
           :value="user.isLiked"
           @update:value="updateLiked"
         />
       </div>
+      <p
+        v-if="!isNone"
+        class=" text-sm text-gray-400"
+      >
+        📅 更新時間：{{ user.timestamp }}
+      </p>
       <ul
         v-if="!isNone"
         class="mt-2 grid grid-cols-3 gap-1"

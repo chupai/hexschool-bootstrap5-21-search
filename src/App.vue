@@ -50,6 +50,7 @@ function initUser(userList) {
     } else {
       user.isLiked = false;
     }
+    user.time = Util.formatTimestamp(user.timestamp);
   });
 }
 
@@ -61,7 +62,7 @@ async function initUserList(userData) {
   initUser(userData.all);
   userData.none = userData.all.filter((item) => item.doneCount === 0);
   userData.done = userData.all.filter((item) => item.doneCount !== 0);
-  userData.done.sort((a, b) => b.rank - a.rank);
+  userData.done.sort((a, b) => b.time - a.time);
   userData.filterDone = userData.done;
 }
 
@@ -142,7 +143,7 @@ export default {
       if (newValue.length === 0) {
         userData.filterDone = userData.done;
       } else {
-        userData.filterDone = userData.done.filter((user) => {
+        const filterResult = userData.done.filter((user) => {
           let temp = true;
           newValue.forEach((week) => {
             if (!user[`${week}Url`]) {
@@ -151,6 +152,13 @@ export default {
           });
           return temp;
         });
+        const sortResult = filterResult.sort((a, b) => {
+          if (a.rank === b.rank) {
+            return a.time - b.time;
+          }
+          return b.rank - a.rank;
+        });
+        userData.filterDone = sortResult;
       }
       window.setTimeout(() => {
         isLoading.value = false;
