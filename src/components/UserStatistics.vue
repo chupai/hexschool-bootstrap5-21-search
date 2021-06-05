@@ -31,18 +31,18 @@ export default {
         :pivot-text="`${WEEK_LIST['week' + (index + 1)]}：${value}`"
       />
     </li>
-    <li class="w-2/4">
+    <li class="w-3/4 ml-8">
       <v-progress
         :percent="(statisticalData.week3List[0] / statisticalData.weekList[2]) * 100"
-        :pivot-text="`最終 LV1：${statisticalData.week3List[0]}`"
+        :pivot-text="`LV1：${statisticalData.week3List[0]}`"
       />
       <v-progress
         :percent="(statisticalData.week3List[1] / statisticalData.weekList[2]) * 100"
-        :pivot-text="`最終 LV2：${statisticalData.week3List[1]}`"
+        :pivot-text="`LV2：${statisticalData.week3List[1]}`"
       />
       <v-progress
         :percent="(statisticalData.week3List[2] / statisticalData.weekList[2]) * 100"
-        :pivot-text="`全部完成：${statisticalData.week3List[2]}`"
+        :pivot-text="`恭喜完成 LV3：${statisticalData.week3List[2]}`"
       />
     </li>
   </ul>

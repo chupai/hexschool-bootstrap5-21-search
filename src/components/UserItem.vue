@@ -22,7 +22,7 @@ export default {
     const statisticalData = inject('statisticalData');
     const rankMessage = computed(() => {
       if (isNone.value) {
-        return '該寫作業囉！';
+        return '同學，報名有紀錄der！該寫作業囉！';
       }
 
       let winCount = statisticalData.allCount; // 預設人數
