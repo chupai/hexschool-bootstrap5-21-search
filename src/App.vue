@@ -19,6 +19,7 @@ import VLoading from '@/components/VLoading.vue';
 function initUser(userList) {
   const likeList = Util.storage.get('likeList', []);
   userList.forEach((user, index) => {
+    // 新增 doneCount：完成數 0 ~ 3
     let doneCount = 0;
     for (let i = 1; i <= WEEK_COUNT; i += 1) {
       if (user[`week${i}Url`]) {
@@ -26,6 +27,8 @@ function initUser(userList) {
       }
     }
     user.doneCount = doneCount;
+
+    // 新增 rank：0 ~ 5，doneCount 3 以上根據 week 3 LV 增加
     if (user.doneCount < 3) {
       user.rank = doneCount;
     } else {
@@ -44,12 +47,17 @@ function initUser(userList) {
           break;
       }
     }
+    // 新增 id
     user.id = index;
+
+    // 新增 isLiked
     if (likeList.includes(user.id)) {
       user.isLiked = true;
     } else {
       user.isLiked = false;
     }
+
+    // 新增 time，日期字串轉 timestamp，用來排序
     user.time = Util.formatTimestamp(user.timestamp);
   });
 }
@@ -63,6 +71,7 @@ async function initUserList(userData) {
   userData.none = userData.all.filter((item) => item.doneCount === 0);
   userData.done = userData.all.filter((item) => item.doneCount !== 0);
   userData.done.sort((a, b) => b.time - a.time);
+  userData.none.sort((a, b) => b.time - a.time);
   userData.filterDone = userData.done;
 }
 
@@ -79,7 +88,7 @@ function calcStatisticalData(statisticalData, userData) {
       }
     });
 
-    // 計算 week3 LV 數
+    // 計算 week3 LV 數，LV1 ~LV3
     if (user.week3Url) {
       switch (user.week3) {
         case 'LV1':
@@ -96,7 +105,7 @@ function calcStatisticalData(statisticalData, userData) {
           break;
       }
     }
-
+    // 計算繳交數量，0 ~ 3
     doneList[user.doneCount] += 1;
   });
 }

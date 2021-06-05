@@ -58,9 +58,9 @@ export default {
 <template>
   <li
     class="
-     px-4 py-4 rounded-md shadow-xl dark:bg-dark-800
+     px-4 py-4 rounded-md shadow bg-white dark:bg-dark-800
     "
-    :class="[user.isLiked ? 'bg-white' : 'bg-gray-50']"
+    :class="[user.isLiked ? 'opacity-100' : 'opacity-95']"
   >
     <div>
       <div class="flex justify-between items-center">
@@ -87,8 +87,14 @@ export default {
         />
       </div>
       <p
+        v-if="isNone"
+        class=" text-sm text-gray-400 select-none"
+      >
+        📅 報名時間：{{ user.timestamp }}
+      </p>
+      <p
         v-if="!isNone"
-        class=" text-sm text-gray-400"
+        class=" text-sm text-gray-400 select-none"
       >
         📅 更新時間：{{ user.timestamp }}
       </p>
@@ -104,7 +110,7 @@ export default {
             :url="user[`${key}Url`]"
             :class="{'pointer-events-none': !user[`${key}Url`] }"
           >
-            {{ value }}：{{ user[`${key}Url`] ? user[key] : '' }}
+            <span class="font-bold">{{ value }}</span>：{{ user[`${key}Url`] ? user[key] : '' }}
           </user-item-link>
         </li>
       </ul>

@@ -42,7 +42,7 @@ export default {
       />
       <v-progress
         :percent="(statisticalData.week3List[2] / statisticalData.weekList[2]) * 100"
-        :pivot-text="`最終 LV3：${statisticalData.week3List[2]}`"
+        :pivot-text="`全部完成：${statisticalData.week3List[2]}`"
       />
     </li>
   </ul>

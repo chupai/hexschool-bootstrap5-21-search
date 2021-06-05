@@ -15,6 +15,7 @@
     @apply bg-primary-800 bg-opacity-90 rounded-xl;
     @apply invisible opacity-0;
     @apply transition -translate-x-1/2 -translate-y-1;
+    @apply z-50;
   }
   .tooltip:hover::after {
     @apply block visible opacity-100;
